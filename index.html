@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LET Reviewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>LET REVIEWER</h1>
+        <p>OFFLINE EXAMINATION REVIEW PLATFORM</p>
+    </header>
+
+    <main class="container">
+
+<!-- REGISTRATION PAGE -->
+<section id="registrationPage" class="card">
+
+    <h2>Welcome, Future Licensed Professional Teacher!</h2>
+    <p>Let's personalize your LET review experience.</p>
+
+    <form id="registrationForm">
+
+        <label for="learnerName">Full Name</label>
+        <input
+            type="text"
+            id="learnerName"
+            placeholder="Enter your full name"
+            required
+        >
+
+        <label for="examDate">LET Examination Date</label>
+        <input
+            type="date"
+            id="examDate"
+            required
+        >
+
+        <label for="dailyGoal">Daily Review Goal</label>
+        <select id="dailyGoal" required>
+            <option value="">Choose your daily goal</option>
+            <option value="1">1 hour per day</option>
+            <option value="2">2 hours per day</option>
+            <option value="3">3 hours per day</option>
+            <option value="4">4 hours per day</option>
+        </select>
+
+        <button type="submit">Save My Profile</button>
+
+    </form>
+
+</section>
+
+        <section class="welcome">
+            <h2>Welcome, Future Licensed Professional Teacher!</h2>
+            <p>Your journey to becoming an LPT starts here.</p>
+        </section>
+
+        <section id="homePage" class="subjects">
+            
+<div class="card" style="grid-column: 1 / -1;">
+    <h2>My Profile</h2>
+    <p id="profileDisplay">Your personal review information.</p>
+
+    <button onclick="editProfile()">
+        Edit My Profile
+    </button>
+</div>
+
+
+    <div class="card dashboard-card" style="grid-column: 1 / -1;">
+        <h2>My Review Dashboard</h2>
+        <p>Track your LET review journey and performance.</p>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        ">
+
+            <div class="card">
+                <h2 id="dashboardQuestions">0</h2>
+                <p>Questions Answered</p>
+            </div>
+
+            <div class="card">
+                <h2 id="dashboardCorrect">0</h2>
+                <p>Correct Answers</p>
+            </div>
+
+            <div class="card">
+                <h2 id="dashboardAccuracy">0%</h2>
+                <p>Overall Accuracy</p>
+            </div>
+
+            <div class="card">
+                <h2 id="dashboardBatches">0</h2>
+                <p>Batches Completed</p>
+            </div>
+
+        </div>
+        <!-- DAILY STUDY TIMER -->
+<div class="card" id="studyTimerCard" style="margin-top: 20px; text-align: center;">
+
+    <h2>My Daily Study Timer</h2>
+    <p>Stay consistent with your LET review goals!</p>
+
+    <h1 id="studyTimer" style="
+        font-size: 42px;
+        color: #0F766E;
+        margin: 20px 0;
+        letter-spacing: 3px;
+    ">00:00:00</h1>
+
+    <p id="timerStatus">Ready to start your daily study goal.</p>
+
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+
+        <button id="startTimerButton" onclick="startStudyTimer()">
+            Start
+        </button>
+
+        <button id="pauseTimerButton" onclick="pauseStudyTimer()" style="background: #64748B;">
+            Pause
+        </button>
+
+        <button onclick="resetStudyTimer()" style="background: #DC2626;">
+            Reset
+        </button>
+
+    </div>
+
+</div>
+        <div class="card">
+    <h2>My Mistake Review</h2>
+    <p>Review questions you answered incorrectly.</p>
+
+    <p>
+        Saved Mistakes:
+        <strong id="mistakeCount">0</strong>
+    </p>
+
+    <button onclick="showMistakes()">
+        Review My Mistakes
+    </button>
+</div>
+<div style="margin-top: 20px; text-align: right;">
+    <button
+        onclick="startOver()"
+        style="background: #DC2626;">
+        Start Over
+    </button>
+</div>
+    </div>
+
+    <div class="card">
+        <h3>General Education</h3>
+        <p>Practice essential concepts and strengthen your knowledge.</p>
+        <button onclick="showSubject('General Education')">
+            Explore General Education
+        </button>
+    </div>
+
+    <div class="card">
+        <h3>Professional Education</h3>
+        <p>Review teaching principles, theories, and professional competencies.</p>
+        <button onclick="showSubject('Professional Education')">
+            Explore Professional Education
+        </button>
+    </div>
+<!-- MY REVIEW HISTORY - BOTTOM SECTION -->
+<div class="card" style="grid-column: 1 / -1;">
+    <h2>My Review History</h2>
+    <p>Track your completed review sessions.</p>
+
+    <div id="reviewHistory">
+        <p>No review history yet. Start practicing!</p>
+    </div>
+</div>
+</section>
+<section id="mistakePage" style="display: none;">
+    <h2>My Mistake Review</h2>
+
+    <button onclick="goHome()">Back to Home</button>
+
+    <button onclick="startMistakeQuiz()">
+    Practice Mistakes Again
+</button>
+
+<div id="mistakeList"></div>
+</section>
+<section id="batchPage" style="display: none;">
+
+    <button onclick="goToTopics()">← Back to Topics</button>
+    <h2 id="batchTitle" style="margin: 25px 0 10px;">
+        Select a Batch
+    </h2>
+
+    <p>Choose a batch to begin your practice.</p>
+
+    <div id="batchList" class="subjects" style="margin-top: 25px;"></div>
+
+</section>
+<section id="topicPage" style="display: none;">
+
+    <button onclick="goHome()">← Back to Home</button>
+
+    <h2 id="subjectTitle" style="margin: 25px 0 10px;"></h2>
+
+    <p>Select a topic to begin reviewing.</p>
+
+    <div id="topicList" class="subjects" style="margin-top: 25px;"></div>
+
+</section>
+
+        </section>
+<section id="quizPage" style="display: none;">
+
+    <button onclick="goToBatches()">← Back to Batches</button>
+
+    <div class="card" style="margin-top: 25px;">
+
+        <p id="quizCategory">MATHEMATICS</p>
+
+        <h2 id="questionNumber" style="margin: 15px 0;">
+            Question 1 of 5
+        </h2>
+
+        <div class="progress-bar">
+            <div id="progressFill"></div>
+        </div>
+
+        <h3 id="questionText" style="margin: 25px 0;">
+            Question appears here.
+        </h3>
+
+        <div id="choicesContainer"></div>
+
+        <div id="feedback" style="margin-top: 20px;"></div>
+
+        <button id="checkButton" onclick="checkAnswer()">
+            Check Answer
+        </button>
+
+        <button id="nextButton" onclick="nextQuestion()" style="display: none;">
+            Next Question →
+        </button>
+
+    </div>
+
+</section>
+    </main>
+
+    <footer>
+        LET REVIEWER | Your Personal Examination Companion
+    </footer>
+<script src="questions.js"></script>
+<script src="batch-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

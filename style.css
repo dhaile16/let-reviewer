@@ -1,0 +1,331 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #1E293B;
+    min-height: 100vh;
+
+    background-color: #EAF5F4;
+    background-image:
+        radial-gradient(
+            ellipse 75% 35% at 100% 0%,
+            #B9DEDA 0%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 65% 40% at 0% 100%,
+            #C9E6E2 0%,
+            transparent 100%
+        ),
+        linear-gradient(
+            145deg,
+            #F4FAF9 0%,
+            #E8F3F2 50%,
+            #DDECEB 100%
+        );
+
+    background-attachment: fixed;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: -120px;
+    right: -100px;
+    width: 650px;
+    height: 380px;
+    background: rgba(111, 181, 174, 0.18);
+    border-radius: 0 0 0 70%;
+    transform: rotate(-12deg);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -180px;
+    left: -120px;
+    width: 700px;
+    height: 420px;
+    background: rgba(125, 190, 183, 0.16);
+    border-radius: 70% 70% 0 0;
+    transform: rotate(12deg);
+    z-index: -1;
+    pointer-events: none;
+}
+
+header {
+    background: #142D50;
+    color: white;
+    padding: 25px 8%;
+}
+
+header h1 {
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+header p {
+    color: #CBD5E1;
+    margin-top: 8px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 25px;
+}
+
+.welcome {
+    margin-bottom: 35px;
+}
+
+.welcome h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.welcome p {
+    color: #64748B;
+}
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #64748B;
+    margin-bottom: 25px;
+}
+
+button {
+    background: #E88A24;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #CC7416;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #94A3B8;
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .subjects {
+        grid-template-columns: 1fr;
+    }
+}
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+#progressFill {
+    width: 20%;
+    height: 100%;
+    background: #E88A24;
+    transition: width 0.3s ease;
+}
+
+#choicesContainer {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.choice {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    color: #1E293B;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.choice.selected {
+    border: 2px solid #E88A24;
+    background: #FFF7ED;
+}
+
+.choice.correct {
+    border: 2px solid #16A34A;
+    background: #F0FDF4;
+}
+
+.choice.incorrect {
+    border: 2px solid #DC2626;
+    background: #FEF2F2;
+}
+
+#feedback {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* ================================
+   LET REVIEWER DASHBOARD DESIGN
+================================ */
+
+/* Dashboard welcome */
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h2 {
+    font-size: 28px;
+    color: #142D50;
+    margin-bottom: 8px;
+}
+
+/* Profile card */
+#homePage > .card:first-child {
+    margin-bottom: 25px;
+}
+
+/* Dashboard spacing */
+.dashboard-card {
+    margin-bottom: 25px;
+}
+
+.dashboard-card > div:first-of-type {
+    margin-top: 20px;
+}
+
+/* Statistics cards */
+.dashboard-card .card {
+    padding: 22px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: none;
+    background: #F8FAFC;
+}
+
+.dashboard-card .card h2 {
+    font-size: 30px;
+    color: #142D50;
+    margin-bottom: 8px;
+}
+
+.dashboard-card .card p {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+/* Mistake review card */
+.dashboard-card > .card:last-child {
+    margin-top: 25px;
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+    text-align: left;
+}
+
+.dashboard-card > .card:last-child h2 {
+    font-size: 21px;
+    color: #142D50;
+}
+
+.dashboard-card > .card:last-child p {
+    margin-bottom: 15px;
+}
+
+/* Subject cards */
+#homePage > .card:not(.dashboard-card) {
+    margin-bottom: 5px;
+}
+
+#homePage > .card h3 {
+    color: #142D50;
+}
+
+#homePage > .card button {
+    margin-top: 5px;
+}
+
+/* Review history */
+#reviewHistory {
+    margin-top: 20px;
+}
+
+#reviewHistory p {
+    margin-bottom: 0;
+}
+
+/* Consistent card appearance */
+#homePage .card {
+    transition: box-shadow 0.2s ease;
+}
+
+#homePage .card:hover {
+    box-shadow: 0 5px 18px rgba(20, 45, 80, 0.08);
+}
+
+/* Mobile dashboard */
+@media (max-width: 650px) {
+
+    .container {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .welcome h2 {
+        font-size: 23px;
+    }
+
+    #homePage .card {
+        padding: 20px;
+    }
+
+    .dashboard-card .card {
+        padding: 15px;
+    }
+
+    .dashboard-card .card h2 {
+        font-size: 25px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: 0 5px 18px rgba(20, 45, 80, 0.05);
+    border-radius: 14px;
+}
